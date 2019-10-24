@@ -39,3 +39,15 @@ find from /home/user1/dir1 and copy to /tmp along with source folder structure
 ```console
 find /home/user1/dir1 -name '*2011*.xml' -exec cp --parents {} /tmp  \;
 ```
+
+## Remove unsed docker images
+
+```console
+docker images -q |xargs docker rmi
+```
+
+## Remove all stoped container
+
+```console
+docker ps -q |xargs docker rm 
+```
