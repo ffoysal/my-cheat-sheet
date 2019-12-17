@@ -51,3 +51,9 @@ docker images -q |xargs docker rmi
 ```console
 docker ps -q |xargs docker rm 
 ```
+
+## Delete all `none` tagged images
+
+```console
+docker rmi -f $(docker images | grep "^<none>" | awk '{print $3}')
+```
