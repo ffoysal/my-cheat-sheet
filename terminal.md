@@ -63,3 +63,16 @@ docker rmi -f $(docker images | grep "^<none>" | awk '{print $3}')
 run previlige pod `docker run -it --privileged --pid=host debian nsenter -t 1 -m -u -n -i sh`
 
 Follow the link [docker-desktop VM](https://forums.docker.com/t/is-it-possible-to-ssh-to-the-xhyve-machine/17426/3)
+
+## Spinup redis client in kubernetes cluster
+
+```console
+kubectl run redis-client  --image=bitnami/redis:latest --restart=Never --rm -it -- sh
+
+redis-cli -h redis-server
+
+Or
+
+redis-cli -h redis-server -a <password> #if AUTH enabled in the server
+
+```
