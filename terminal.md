@@ -76,3 +76,36 @@ Or
 redis-cli -h redis-server -a <password> #if AUTH enabled in the server
 
 ```
+
+verify server tls cert
+
+```
+openssl s_client -connect example.com:443 -showcerts -servername  example.com
+
+# verify finger print
+openssl x509 -noout -fingerprint -sha256 -in demo-device3.crt
+
+# verify certificate and kye in sync
+openssl x509 -noout -modulus -in cert.crt | openssl md5
+openssl rsa -noout -modulus -in privkey.txt | openssl md5
+```
+
+git wip in `~/.gitconfig`
+
+```
+[core]
+	ignorecase = false
+[alias]
+        wip = for-each-ref --sort='authordate:iso8601' --format=' %(color:green)%(authordate:relative)%09%(color:white)%(refname:short)' refs/heads
+[merge]
+	tool = vscode
+[mergetool "vscode"]
+	cmd = code -n --wait $MERGED
+[diff]
+	tool = vscode
+[difftool "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
+[pull]
+	rebase = false
+```
+
