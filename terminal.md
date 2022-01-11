@@ -93,6 +93,12 @@ openssl rsa -noout -modulus -in privkey.txt | openssl md5
 git wip in `~/.gitconfig`
 
 ```
+[url "https://your-token@github.com/"]
+        insteadOf = git@github.com:
+[url "https://your-token@github.com/"]
+        insteadOf = ssh://git@github.com
+[url "https://your-token@github.com"]
+        insteadOf = git::ssh://git@github.com
 [core]
 	ignorecase = false
 [alias]
